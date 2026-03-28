@@ -84,28 +84,6 @@ Sistema_Inventario/
 
 ---
 
-## ▶️ Instalación y ejecución
-
-1. Clonar el repositorio:
-
-```bash
-git clone https://github.com/Jomacogo/gestor-inventario.git
-```
-
-2. Entrar al proyecto:
-
-```bash
-cd gestor-inventario
-```
-
-3. Ejecutar la aplicación:
-
-```bash
-python main.py
-```
-
----
-
 ## 🗄️ Base de datos
 
 El sistema utiliza **SQLite local**, lo que significa:
