@@ -124,12 +124,6 @@ Permite ejecutar la aplicación sin necesidad de instalar Python.
 
 ---
 
-## 📈 Estado del proyecto
-
-🟡 En desarrollo / mejoras en curso
-
----
-
 ## 👨‍💻 Autor
 
 **José Manuel Correa**
