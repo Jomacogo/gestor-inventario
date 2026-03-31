@@ -1,4 +1,4 @@
-# 📦 Sistema de Inventario
+# 📦 Sistema de Inventario / InventarioJC
 
 Aplicación de escritorio para la gestión de inventario desarrollada en **Python**, con arquitectura modular (MVC + servicios) y base de datos local en SQLite.
 
@@ -6,7 +6,7 @@ Aplicación de escritorio para la gestión de inventario desarrollada en **Pytho
 
 ## 🚀 Descripción
 
-Este sistema permite administrar productos, usuarios, ventas y clientes desde una interfaz gráfica organizada. Está diseñado para ser escalable, mantenible y fácil de usar.
+Este sistema permite administrar productos, usuarios, ventas y clientes desde una interfaz gráfica organizada. Está diseñado para ser escalable, mantenible y fácil de usar, permitiendo búsquedas dinámicas en tiempo real cuando hay grandes volúmenes de datos.
 
 El proyecto fue desarrollado con apoyo de herramientas de inteligencia artificial (Antigravity), combinando automatización con validación manual del código.
 
@@ -18,9 +18,9 @@ El sistema sigue una estructura modular basada en separación de responsabilidad
 
 * **models/** → Representación de datos (entidades)
 * **services/** → Lógica de negocio
-* **ui/** → Interfaz gráfica
+* **ui/** → Interfaz gráfica (Construida con PySide6)
 * **database/** → Conexión y gestión de base de datos
-* **utils/** → Funciones auxiliares
+* **utils/** → Funciones auxiliares y API móvil
 
 ---
 
@@ -53,10 +53,7 @@ Sistema_Inventario/
 │   ├── personas_view.py
 │   └── historial_ventas_view.py
 │
-│── utils/
-│   ├── helpers.py
-│   └── api_celular.py
-│
+│── api_celular.py
 │── inventario.db
 │── main.py
 │── README.md
@@ -66,18 +63,21 @@ Sistema_Inventario/
 
 ## 🔐 Funcionalidades principales
 
-* 🔑 Sistema de autenticación (login de usuarios)
-* 📦 Gestión de productos
-* 👥 Gestión de usuarios y personas
-* 💰 Registro de ventas
-* 📊 Historial de ventas
-* 🗄️ Base de datos local (SQLite)
+* 🔑 Sistema de autenticación encriptado (login de usuarios)
+* 📦 Gestión de productos con **búsqueda y filtros dinámicos**
+* 👥 Gestión concurrente de usuarios, clientes, proveedores e instaladores
+* 💰 Registro de ventas y control de roles (Administrador vs Vendedor)
+* 📊 Historial completo de ventas con opción a anulación
+* 📱 **API REST Interna** (Flask + Waitress) para consultas desde el celular en red local.
+* 🗄️ Base de datos local (SQLite) y **Exportación a Excel**.
 
 ---
 
 ## ⚙️ Tecnologías utilizadas
 
-* **Python**
+* **Python 3.13**
+* **PySide6 (Qt)**
+* **Flask y Waitress (Backend móvil)**
 * **SQLite**
 * **Arquitectura modular (MVC adaptado)**
 * **Git & GitHub**
@@ -88,12 +88,11 @@ Sistema_Inventario/
 
 El sistema utiliza **SQLite local**, lo que significa:
 
-* No requiere servidor
-* Funciona directamente en el equipo
+* No requiere servidor externo
+* Funciona directamente en el equipo sin depender de internet
 * Ideal para proyectos pequeños y medianos
 
 Archivo:
-
 ```
 inventario.db
 ```
@@ -105,7 +104,6 @@ inventario.db
 Este proyecto fue desarrollado con apoyo de herramientas de IA (Antigravity de Google).
 
 El código generado fue:
-
 * Revisado manualmente
 * Ajustado a necesidades reales
 * Optimizado para mantener buenas prácticas
@@ -114,13 +112,9 @@ El código generado fue:
 
 ## 📦 Versión ejecutable
 
-El proyecto incluye una versión ejecutable:
+El proyecto está diseñado para compilarse en una versión ejecutable instaladora (`.exe`) lista para producción a clientes y negocios. 
 
-```
-Sistema_de_Inventario_Portable.exe
-```
-
-Permite ejecutar la aplicación sin necesidad de instalar Python.
+Debido a que el instalador final es comercial, dicho archivo (como `Instalar_InventarioJC.exe` o `Sistema_de_Inventario.exe`) se distribuye de manera estrictamente privada y no se encuentra publicado en este repositorio.
 
 ---
 
@@ -128,5 +122,3 @@ Permite ejecutar la aplicación sin necesidad de instalar Python.
 
 **José Manuel Correa**
 Desarrollador enfocado en frontend y desarrollo de software asistido con IA.
-
----
