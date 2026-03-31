@@ -1,0 +1,25 @@
+# Configuración anti-robo (Lógica privada)
+# ==========================================
+/services/
+/models/
+/database/
+inventario.db
+
+# Instaladores / Compilados Privados
+# ==========================================
+/dist/
+/build/
+/installer_output/
+*.spec
+Instalar_InventarioJC.exe
+Sistema_de_Inventario_Portable.exe
+*.ico
+
+# Cachés y temporales
+# ==========================================
+__pycache__/
+*.py[cod]
+*$py.class
+env/
+venv/
+.env
