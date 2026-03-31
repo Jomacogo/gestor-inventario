@@ -6,7 +6,7 @@ from services.auth_service import auth_service
 class LoginWindow(QWidget):
     def __init__(self):
         super().__init__()
-        self.setWindowTitle("Sistema de Gestión - Login")
+        self.setWindowTitle("InventarioJC - Login")
         self.setFixedSize(350, 200)
 
         layout = QVBoxLayout()

@@ -1,5 +1,5 @@
-from PySide6.QtWidgets import (QWidget, QVBoxLayout, QTableWidget, QTableWidgetItem,
-                               QPushButton, QMessageBox, QGroupBox, QFormLayout, QLineEdit, QComboBox)
+from PySide6.QtWidgets import (QWidget, QVBoxLayout, QHBoxLayout, QTableWidget, QTableWidgetItem,
+                               QPushButton, QMessageBox, QGroupBox, QFormLayout, QLineEdit, QComboBox, QLabel)
 from services.persona_service import persona_service
 
 class PersonasView(QWidget):
@@ -22,6 +22,15 @@ class PersonasView(QWidget):
         group.setLayout(form)
         layout.addWidget(group)
 
+        search_layout = QHBoxLayout()
+        search_label = QLabel("Buscar:")
+        self.in_busqueda = QLineEdit()
+        self.in_busqueda.setPlaceholderText("Escriba para buscar en esta tabla...")
+        self.in_busqueda.textChanged.connect(self.filtrar_tabla)
+        search_layout.addWidget(search_label)
+        search_layout.addWidget(self.in_busqueda)
+        layout.addLayout(search_layout)
+
         self.tabla = QTableWidget()
         self.tabla.setColumnCount(4)
         self.tabla.setHorizontalHeaderLabels(["ID", "Cédula", "Nombre", "Tipo"])
@@ -29,6 +38,16 @@ class PersonasView(QWidget):
         layout.addWidget(self.tabla)
         self.setLayout(layout)
         self.cargar_datos()
+
+    def filtrar_tabla(self, texto):
+        for row in range(self.tabla.rowCount()):
+            match = False
+            for col in range(self.tabla.columnCount()):
+                item = self.tabla.item(row, col)
+                if item and texto.lower() in item.text().lower():
+                    match = True
+                    break
+            self.tabla.setRowHidden(row, not match)
 
     def update_data(self):
         self.cargar_datos()

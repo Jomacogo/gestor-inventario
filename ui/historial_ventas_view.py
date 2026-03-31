@@ -1,4 +1,5 @@
-from PySide6.QtWidgets import QWidget, QVBoxLayout, QTableWidget, QTableWidgetItem, QPushButton, QMessageBox, QFileDialog
+from PySide6.QtWidgets import (QWidget, QVBoxLayout, QHBoxLayout, QTableWidget, QTableWidgetItem,
+                               QPushButton, QMessageBox, QFileDialog, QLineEdit, QLabel)
 from PySide6.QtGui import QColor
 from openpyxl import Workbook
 from services.venta_service import venta_service
@@ -8,6 +9,15 @@ class HistorialVentasView(QWidget):
     def __init__(self):
         super().__init__()
         layout = QVBoxLayout()
+
+        search_layout = QHBoxLayout()
+        search_label = QLabel("Buscar:")
+        self.in_busqueda = QLineEdit()
+        self.in_busqueda.setPlaceholderText("Escriba para buscar en el historial...")
+        self.in_busqueda.textChanged.connect(self.filtrar_tabla)
+        search_layout.addWidget(search_label)
+        search_layout.addWidget(self.in_busqueda)
+        layout.addLayout(search_layout)
 
         self.tabla = QTableWidget()
         self.tabla.setColumnCount(7)
@@ -27,6 +37,16 @@ class HistorialVentasView(QWidget):
 
         self.setLayout(layout)
         self.cargar_datos()
+
+    def filtrar_tabla(self, texto):
+        for row in range(self.tabla.rowCount()):
+            match = False
+            for col in range(self.tabla.columnCount()):
+                item = self.tabla.item(row, col)
+                if item and texto.lower() in item.text().lower():
+                    match = True
+                    break
+            self.tabla.setRowHidden(row, not match)
 
     def update_data(self):
         self.cargar_datos()

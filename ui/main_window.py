@@ -12,7 +12,7 @@ class MainWindow(QMainWindow):
 
         user = auth_service.get_current_user()
         nombre = user.nombre if user else "Desconocido"
-        self.setWindowTitle(f"Sistema de Gestión - Vendedor: {nombre}")
+        self.setWindowTitle(f"InventarioJC - Vendedor: {nombre}")
         self.resize(800, 600)
 
         # Barra de herramientas
